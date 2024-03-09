@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration Form</title>
+
+    <style>
+      * {
+        padding: 20px;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inconsolata:wght@200..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: "Comfortaa", sans-serif;
+        background-image: url("images/library.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      form {
+        position: relative;
+        padding: 50px;
+        max-width: 600px;
+        width: 100%;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 10px;
+      }
+
+      label {
+        display: block;
+        padding-left: 5px;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        background-color: rgb(54, 60, 92);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 17px;
+        width: calc(35% - 5px);
+      }
+
+      input[type="reset"] {
+        color: black;
+        padding: 10px 20px;
+        border: 1px solid black;
+        border-radius: 5px solid;
+        cursor: pointer;
+        font-size: 17px;
+        width: calc(35% - 5px);
+      }
+
+      input[type="submit"]:hover,
+      input[type="reset"]:hover {
+        background-color: #455888;
+        color: white;
+      }
+
+      #main-heading {
+        position: relative;
+        right: 15px;
+      }
+      #main-paragraph {
+        position: relative;
+        right: 15px;
+        bottom: 40px;
+      }
+
+      .form-input-wide {
+        position: relative;
+        bottom: 50px;
+        width: 100%;
+        padding: 0;
+      }
+
+      #birthdate {
+        width: calc(49% - 5px);
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+        float: left;
+      }
+
+      #gender {
+        width: calc(50% - 5px);
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+        float: right;
+        position: relative;
+        bottom: 75px;
+        right: 12px;
+      }
+
+      #gender1 {
+        position: relative;
+        bottom: 78px;
+        left: 20px;
+      }
+
+      #firstName,
+      #lastName {
+        width: calc(50% - 10px);
+      }
+
+      #city,
+      #region {
+        width: calc(50% - 10px);
+      }
+
+      #zipcode,
+      #country {
+        width: calc(50% - 10px);
+      }
+
+      #phone {
+        width: calc(49% - 5px);
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+        float: left;
+      }
+
+      #workphone {
+        width: calc(50% - 5px);
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+        float: right;
+        position: relative;
+        bottom: 59px;
+        right: 12px;
+      }
+
+      #workphone1 {
+        position: relative;
+        bottom: 59px;
+        left: 20px;
+      }
+
+      .fixed-size-textarea {
+        resize: none;
+      }
+
+      .left {
+        display: inline-block;
+        width: 2.5em;
+        height: 2.5em;
+        border: 0.25em solid white;
+        border-radius: 50%;
+        margin-right: 1em;
+        position: relative;
+        bottom: 600px;
+        right: 300px;
+      }
+
+      .left:after {
+        content: "";
+        display: inline-block;
+        margin-top: 0.75em;
+        margin-left: 0.9em;
+        width: 1em;
+        height: 1em;
+        border-top: 0.25em solid white;
+        border-right: 0.25em solid white;
+        -moz-transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+      }
+
+      a:hover .left:after,
+      a:hover .top:after,
+      a:hover .bottom:after,
+      a:hover .right:after {
+        border-top: 0.25em solid lightgreen;
+        border-right: 0.25em solid lightgreen;
+      }
+
+      .arrow p {
+        position: relative;
+        color: white;
+        margin-top: 50px;
+        margin-left: 100px;
+        bottom: 720px;
+        right: 290px;
+        font-size: 18px;
+      }
+
+      .arrow a,
+      p {
+        text-decoration: none;
+      }
+
+      .arrow p:hover {
+        color: lightgreen;
+      }
+
+      .left:hover {
+        border: 0.25em solid lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="arrow">
+      <a href="index.html">
+        <span class="left"></span>
+        <p>Return to main page</p>
+      </a>
+    </div>
+    <form action="index.php" method="POST" enctype="multipart/form-data">
+      <h1 id="main-heading">Student Registration Form</h1>
+      <p id="main-paragraph">Fill out the form for registration</p>
+
+      <div id="cid_63" class="form-input-wide" data-layout="full">
+        <div
+          class="divider"
+          data-component="divider"
+          style="
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-color: black;
+            height: 1px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          "
+        ></div>
+      </div>
+
+      <label for="firstName">Name:</label>
+      <input type="text" id="firstName" name="firstName" placeholder="First" />
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        placeholder="Last"
+      /><br />
+      <label for="birthdate">Birth Date (MM/DD/YYYY):</label>
+      <input type="date" id="birthdate" name="birthdate" /><br />
+      <label for="gender" id="gender1">Gender:</label>
+      <select id="gender" name="gender">
+        <option value="" disabled selected>Please Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="nonbinary">Non-binary</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="address">Address:</label>
+      <input
+        type="text"
+        id="address1"
+        name="address1"
+        placeholder="Address Line 1"
+      /><br />
+      <input
+        type="text"
+        id="address2"
+        name="address2"
+        placeholder="Address Line 2"
+      /><br />
+      <input type="text" id="city" name="city" placeholder="City" />
+      <select id="region" name="region">
+        <option value="" disabled selected>Region</option></select
+      ><br />
+      <input
+        type="text"
+        id="zipcode"
+        name="zipcode"
+        placeholder="Postal / Zip Code"
+      />
+
+      <select id="country" name="country" onchange="updateRegions()">
+        <option value="us">United States</option>
+        <option value="ca">Canada</option>
+        <option value="uk">United Kingdom</option>
+        <option value="fr">France</option>
+        <option value="de">Germany</option>
+        <option value="jp">Japan</option>
+        <option value="au">Australia</option>
+        <option value="br">Brazil</option>
+        <option value="in">India</option>
+        <option value="cn">China</option>
+        <option value="za">South Africa</option>
+        <option value="mx">Mexico</option>
+        <option value="nz">New Zealand</option>
+        <option value="ar">Argentina</option>
+        <option value="it">Italy</option>
+        <option value="es">Spain</option>
+        <option value="ch">Switzerland</option>
+        <option value="se">Sweden</option>
+        <option value="kr">South Korea</option>
+        <option value="ng">Nigeria</option>
+        <option value="eg">Egypt</option>
+        <option value="id">Indonesia</option>
+        <option value="tr">Turkey</option>
+        <option value="th">Thailand</option>
+        <option value="pk">Pakistan</option>
+        <option value="vn">Vietnam</option>
+        <option value="ph">Philippines</option>
+        <option value="nl">Netherlands</option>
+        <option value="pl">Poland</option>
+        <option value="be">Belgium</option>
+        <option value="sg">Singapore</option>
+        <option value="my">Malaysia</option>
+        <option value="sa">Saudi Arabia</option>
+        <option value="ae">United Arab Emirates</option>
+        <option value="ru">Russia</option>
+        <option value="co">Colombia</option>
+        <option value="pe">Peru</option>
+      </select>
+      <br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" /><br />
+
+      <label for="phone">Phone:</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        pattern="\(\d{3}\) \d{3}-\d{4}"
+        required
+        placeholder="(201) 555-0123"
+      />
+      <!-- The pattern attribute specifies the expected input format -->
+
+      <label for="workphone" id="workphone1">Work Phone:</label>
+      <input
+        type="tel"
+        id="workphone"
+        name="workphone"
+        pattern="\(\d{3}\) \d{3}-\d{4}"
+        required
+        placeholder="(201) 555-0123"
+      />
+      <!-- Make sure to use the same pattern for consistency -->
+
+      <label for="company">Company:</label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        placeholder="ACME LTD"
+      /><br />
+      <label for="courses">Courses:</label>
+      <select id="courses" name="courses">
+        <option value="" disabled selected>Please Select</option>
+        <option value="math">Mathematics</option>
+        <option value="english">English Literature</option>
+        <option value="history">History</option>
+        <option value="science">Science</option>
+        <option value="art">Art and Design</option>
+        <option value="computer">Computer Science</option>
+        <option value="music">Music</option>
+        <option value="physics">Physics</option>
+        <option value="chemistry">Chemistry</option>
+        <option value="biology">Biology</option>
+        <option value="economics">Economics</option>
+        <option value="psychology">Psychology</option>
+        <option value="sociology">Sociology</option>
+        <option value="foreign_language">Foreign Language</option>
+        <option value="physical_education">Physical Education</option>
+        <option value="business">Business Studies</option>
+        <option value="literature">World Literature</option>
+        <option value="philosophy">Philosophy</option>
+        <option value="environmental_science">Environmental Science</option>
+        <option value="engineering">Engineering</option>
+        <option value="political_science">Political Science</option>
+        <option value="medical">Medical Science</option>
+        <option value="communications">Communications</option>
+        <option value="geography">Geography</option>
+        <option value="theater">Theater Arts</option>
+        <option value="nutrition">Nutrition and Dietetics</option>
+        <option value="law">Law and Legal Studies</option>
+        <option value="architecture">Architecture</option>
+        <option value="film_studies">Film Studies</option>
+        <option value="graphic_design">Graphic Design</option>
+        <option value="dance">Dance</option>
+        <option value="sports_management">Sports Management</option>
+        <option value="culinary_arts">Culinary Arts</option>
+        <option value="astronomy">Astronomy</option>
+        <option value="game_design">Game Design</option>
+        <option value="anthropology">Anthropology</option>
+        <option value="linguistics">Linguistics</option>
+        <option value="philanthropy">Philanthropy</option>
+        <option value="robotics">Robotics</option>
+        <option value="virtual_reality">Virtual Reality</option>
+        <option value="finance">Finance</option>
+        <option value="marketing">Marketing</option>
+        <option value="public_relations">Public Relations</option>
+        <option value="graphic_novel_creation">Graphic Novel Creation</option>
+        <option value="fashion_design">Fashion Design</option>
+        <option value="marine_biology">Marine Biology</option>
+        <option value="creative_writing">Creative Writing</option>
+        <option value="agriculture">Agriculture and Agribusiness</option>
+        <option value="urban_planning">Urban Planning</option>
+        <option value="international_relations">International Relations</option>
+        <option value="gender_studies">Gender Studies</option>
+        <option value="digital_marketing">Digital Marketing</option>
+        <option value="data_science">Data Science</option>
+        <option value="bioinformatics">Bioinformatics</option>
+        <option value="forensic_science">Forensic Science</option>
+        <!-- Add more options as needed -->
+      </select>
+      <br />
+
+      <label for="comments">Comments:</label>
+      <textarea
+        id="comments"
+        name="comments"
+        class="fixed-size-textarea"
+        rows="7"
+      ></textarea
+      ><br />
+      <input type="reset" value="Clear Fields" />
+      <input type="submit" value="Submit Application" />
+    </form>
+
+    <script>
+      // Define regions for each country
+      const countryRegions = {
+        us: ["East Coast", "West Coast", "Midwest"],
+        ca: ["Ontario", "Quebec", "British Columbia"],
+        uk: ["England", "Scotland", "Wales"],
+        fr: [
+          "Île-de-France",
+          "Provence-Alpes-Côte d'Azur",
+          "Auvergne-Rhône-Alpes",
+        ],
+        de: ["North Rhine-Westphalia", "Bavaria", "Baden-Württemberg"],
+        jp: ["Kanto", "Kansai", "Chubu"],
+        au: ["New South Wales", "Victoria", "Queensland"],
+        br: ["Southeast", "South", "Central-West"],
+        in: ["North", "South", "East", "West"],
+        cn: ["North", "East", "South"],
+        za: ["Gauteng", "Western Cape", "KwaZulu-Natal"],
+        mx: ["North", "Central", "South"],
+        nz: ["North Island", "South Island"],
+        ar: ["Buenos Aires", "Cordoba", "Santa Fe"],
+        it: ["Lombardy", "Lazio", "Veneto"],
+        es: ["Community of Madrid", "Catalonia", "Valencian Community"],
+        ch: ["Zurich", "Geneva", "Bern"],
+        se: ["Stockholm", "Västra Götaland", "Skåne"],
+        kr: ["Seoul", "Busan", "Incheon"],
+        ng: ["Lagos", "Kano", "Federal Capital Territory"],
+        eg: ["Cairo", "Alexandria", "Giza"],
+        id: ["Java", "Sumatra", "Kalimantan"],
+        tr: ["Istanbul", "Ankara", "Izmir"],
+        th: ["Bangkok", "Central", "Phuket"],
+        pk: ["Punjab", "Sindh", "Khyber Pakhtunkhwa"],
+        vn: ["Hanoi", "Ho Chi Minh City", "Da Nang"],
+        ph: ["Luzon", "Visayas", "Mindanao"],
+        nl: ["North Holland", "South Holland", "Utrecht"],
+        pl: ["Masovian", "Lesser Poland", "Silesian"],
+        be: ["Brussels", "Flanders", "Wallonia"],
+        sg: ["Central", "East", "West"],
+        my: ["Selangor", "Kuala Lumpur", "Penang"],
+        sa: ["Riyadh", "Makkah", "Eastern Province"],
+        ae: ["Dubai", "Abu Dhabi", "Sharjah"],
+        ru: ["Moscow", "St. Petersburg", "Novosibirsk"],
+        co: ["Bogota", "Antioquia", "Valle del Cauca"],
+        pe: ["Lima", "Arequipa", "La Libertad"],
+        // Add regions for additional countries as needed
+      };
+
+      // Function to update region options based on selected country
+      function updateRegions() {
+        const countrySelect = document.getElementById("country");
+        const regionSelect = document.getElementById("region");
+        const selectedCountry = countrySelect.value;
+
+        // Clear current region options
+        regionSelect.innerHTML = "";
+
+        // Populate region options based on the selected country
+        if (selectedCountry in countryRegions) {
+          const regions = countryRegions[selectedCountry];
+          for (const region of regions) {
+            const option = document.createElement("option");
+            option.value = region;
+            option.textContent = region;
+            regionSelect.appendChild(option);
+          }
+        } else {
+          // If the selected country has no predefined regions
+          const option = document.createElement("option");
+          option.value = "";
+          option.textContent = "No options available";
+          regionSelect.appendChild(option);
+        }
+      }
+    </script>
+  </body>
+</html>
